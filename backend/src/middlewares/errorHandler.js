@@ -27,7 +27,7 @@ export const errorHandler = (err, req, res, next) => {
 	}
 
 	//unexpected
-	res.status(500).json({
+	return res.status(500).json({
 		success: false,
 		message: "Server error.",
 	});

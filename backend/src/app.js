@@ -4,7 +4,6 @@ import productRoutes from "./routes/productRoutes.js";
 import { errorHandler } from "./middlewares/errorHandler.js";
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
