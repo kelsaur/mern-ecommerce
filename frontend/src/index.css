@@ -1,1 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500;600&display=swap");
 @import "tailwindcss";
+
+/* serif font */
+.font-serif-custom {
+	font-family: "Playfair Display", serif;
+}
+
+html {
+	font-family: "Inter", sans-serif;
+	color: #202116;
+}
+
+.text-1 {
+	@apply text-gray-700;
+}
+
+.hover-1 {
+	@apply hover:text-gray-900;
+}
+
+.button-1 {
+	@apply bg-[#3e9bed] text-[#fefdfb] px-4 py-2 hover:bg-[#3784de];
+}
+
+.button-2 {
+	@apply bg-[#e8e7e3] text-[#202116] px-4 py-2 hover:bg-[#555553];
+}
+
+.button-3 {
+	@apply bg-[#f3f4f6] text-[#202116] px-4 py-2 hover:bg-[#bcb9b4];
+}
+
+.rounding-1 {
+	@apply rounded-md;
+}
+
+.input-1 {
+	@apply border-gray-300 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:border-stone-700;
+}

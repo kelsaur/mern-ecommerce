@@ -1,12 +1,16 @@
-import { Products } from "../components/ProductGrid";
-import { Filter } from "../components/Filter";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import Hero from "../components/Hero";
 
 const Home = () => {
 	return (
-		<main className="flex gap-8 mx-auto px-4 py-16">
-			<Filter />
-			<Products />
-		</main>
+		<div>
+			<Navbar />
+			<main className="flex gap-8 mx-auto">
+				<Hero />
+			</main>
+			<Footer />
+		</div>
 	);
 };
 

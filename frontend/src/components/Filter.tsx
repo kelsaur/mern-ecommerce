@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const Filter = () => {
+const Filter = () => {
 	const [price, setPrice] = useState<number>(50);
 
 	const handleFilter = () => {
@@ -29,3 +29,5 @@ export const Filter = () => {
 		</aside>
 	);
 };
+
+export default Filter;

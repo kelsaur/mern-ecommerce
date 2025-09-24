@@ -2,7 +2,11 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import type { Product } from "../types/product";
 
-export const Products = () => {
+type ProductsResponse = {
+	products: Product[];
+};
+
+const ProductGrid = () => {
 	const [products, setProducts] = useState<Product[]>([]);
 
 	useEffect(() => {
@@ -12,7 +16,7 @@ export const Products = () => {
 				if (!res.ok) {
 					throw new Error(`HTTP error! status: ${res.status}`);
 				}
-				const data: { products: Product[] } = await res.json();
+				const data: ProductsResponse = await res.json();
 				setProducts(data.products);
 			} catch (error) {
 				console.error("Failed to fetch products: ", error);
@@ -52,3 +56,5 @@ export const Products = () => {
 		</div>
 	);
 };
+
+export default ProductGrid;
