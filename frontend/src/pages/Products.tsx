@@ -8,7 +8,7 @@ const Products = () => {
 		<div>
 			<Navbar />
 			<main className="flex gap-8 mx-auto px-4 py-16">
-				<Filter />
+				{/*<Filter />*/}
 				<ProductGrid />
 			</main>
 			<Footer />

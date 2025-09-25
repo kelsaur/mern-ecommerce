@@ -7,8 +7,15 @@ import {
 import Product from "../models/Product.js";
 
 export const getProducts = async (req, res, next) => {
+	const { audience, category } = req.query;
+
+	const filter = {};
+
+	if (audience) filter.audience = audience;
+	if (category) filter.category = category;
+
 	try {
-		const products = await Product.find();
+		const products = await Product.find(filter);
 		return res.status(200).json({ success: true, products });
 	} catch (error) {
 		return next(error);
@@ -103,6 +110,15 @@ export const deleteProduct = async (req, res, next) => {
 			message: "Product deleted.",
 			product: deletedProduct,
 		});
+	} catch (error) {
+		return next(error);
+	}
+};
+
+export const deleteAllProducts = async (req, res, next) => {
+	try {
+		await Product.deleteMany({});
+		res.json({ message: "All products deleted." });
 	} catch (error) {
 		return next(error);
 	}

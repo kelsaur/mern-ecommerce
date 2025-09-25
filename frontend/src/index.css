@@ -19,6 +19,10 @@ html {
 	@apply hover:text-gray-900;
 }
 
+.hover-2 {
+	@apply hover:text-gray-700;
+}
+
 .button-1 {
 	@apply bg-[#3e9bed] text-[#fefdfb] px-4 py-2 hover:bg-[#3784de];
 }

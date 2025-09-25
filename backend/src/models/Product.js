@@ -15,9 +15,24 @@ const productSchema = new mongoose.Schema(
 		description: {
 			type: String,
 		},
+		audience: {
+			type: String,
+			required: true,
+			enum: ["men", "women", "kids", "unisex"],
+			trim: true,
+		},
 		category: {
 			type: String,
 			required: true,
+			enum: [
+				"shirts",
+				"skirts",
+				"dresses",
+				"sweaters",
+				"pants",
+				"jackets",
+				"other",
+			],
 			trim: true,
 		},
 		image: {
