@@ -1,13 +1,12 @@
 import Navbar from "../components/Navbar";
 import ProductGrid from "../components/ProductGrid";
-import Filter from "../components/Filter";
 import Footer from "../components/Footer";
 
 const Products = () => {
 	return (
 		<div>
 			<Navbar />
-			<main className="flex gap-8 mx-auto px-4 py-16">
+			<main className="flex justify-end gap-8 mx-auto px-4 py-10">
 				{/*<Filter />*/}
 				<ProductGrid />
 			</main>

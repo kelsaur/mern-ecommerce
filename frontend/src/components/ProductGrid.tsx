@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import type { Product } from "../types/product";
 import ProductCard from "./ProductCard";
 
@@ -6,23 +7,27 @@ type ProductsResponse = {
 	products: Product[];
 };
 
-type ProductGridProps = {
-	audience?: string;
-	category?: string;
-};
-
-const ProductGrid = ({ audience, category }: ProductGridProps) => {
+const ProductGrid = () => {
 	const [products, setProducts] = useState<Product[]>([]);
+
+	//read user's URL filters
+	const location = useLocation();
+	//console.log(location)
+	const params = new URLSearchParams(location.search);
+
+	const audience = params.get("audience");
+	const category = params.get("category");
 
 	useEffect(() => {
 		const fetchProducts = async () => {
 			try {
-				const params = new URLSearchParams();
-				if (audience) params.append("audience", audience);
-				if (category) params.append("category", category);
+				//rebuild queryParams for API req to only send filters i want from backend
+				const queryParams = new URLSearchParams();
+				if (audience) queryParams.append("audience", audience);
+				if (category) queryParams.append("category", category);
 
 				const res = await fetch(
-					`http://localhost:4000/api/products?${params.toString()}`
+					`http://localhost:4000/api/products?${queryParams.toString()}`
 				);
 				if (!res.ok) {
 					throw new Error(`HTTP error! status: ${res.status}`);
@@ -39,7 +44,7 @@ const ProductGrid = ({ audience, category }: ProductGridProps) => {
 	return (
 		<div className="bg-white">
 			<div className="mx-auto max-w-full">
-				<div className="grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+				<div className="grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-1 lg:grid-cols-4">
 					{products.map((product) => (
 						<ProductCard key={product._id} product={product} />
 					))}

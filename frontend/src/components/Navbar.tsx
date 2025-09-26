@@ -81,9 +81,9 @@ const Navbar = () => {
 							X
 						</button>
 						<nav className="flex flex-col gap-4">
-							<Link to="#">Women</Link>
-							<Link to="#">Men</Link>
-							<Link to="#">Kids</Link>
+							<Link to="/products?audience=women">Women</Link>
+							<Link to="/products?audience=men">Men</Link>
+							<Link to="/products?audience=kids">Kids</Link>
 							<Link to="#">New In</Link>
 						</nav>
 					</div>

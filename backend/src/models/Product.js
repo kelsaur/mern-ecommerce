@@ -15,6 +15,10 @@ const productSchema = new mongoose.Schema(
 		description: {
 			type: String,
 		},
+		color: {
+			type: String,
+			trim: true,
+		},
 		audience: {
 			type: String,
 			required: true,
