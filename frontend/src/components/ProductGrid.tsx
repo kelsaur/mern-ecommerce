@@ -16,7 +16,7 @@ const ProductGrid = () => {
 	const params = new URLSearchParams(location.search);
 
 	const audience = params.get("audience");
-	const category = params.get("category");
+	const categories = params.getAll("category");
 
 	useEffect(() => {
 		const fetchProducts = async () => {
@@ -24,7 +24,9 @@ const ProductGrid = () => {
 				//rebuild queryParams for API req to only send filters i want from backend
 				const queryParams = new URLSearchParams();
 				if (audience) queryParams.append("audience", audience);
-				if (category) queryParams.append("category", category);
+				if (categories.length > 0) {
+					categories.forEach((cat) => queryParams.append("category", cat));
+				}
 
 				const res = await fetch(
 					`http://localhost:4000/api/products?${queryParams.toString()}`
@@ -39,7 +41,7 @@ const ProductGrid = () => {
 			}
 		};
 		fetchProducts();
-	}, [audience, category]);
+	}, [audience, categories]);
 
 	return (
 		<div className="bg-white">

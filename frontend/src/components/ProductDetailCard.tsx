@@ -60,7 +60,7 @@ const ProductDetailCard = ({ id }: ProductDetailCardProps) => {
 
 				<SizeSelector audience={product.audience} />
 
-				<button className="button-4 rounded-full text-lg">Buy</button>
+				<button className="button-4 rounded-full text-lg">Add To Cart</button>
 			</div>
 		</div>
 	);

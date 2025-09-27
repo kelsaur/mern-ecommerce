@@ -10,9 +10,15 @@ export const getProducts = async (req, res, next) => {
 	const { audience, category } = req.query;
 
 	const filter = {};
-
 	if (audience) filter.audience = audience;
-	if (category) filter.category = category;
+
+	if (category) {
+		if (Array.isArray(category)) {
+			filter.category = { $in: category };
+		} else {
+			filter.category = category;
+		}
+	}
 
 	try {
 		const products = await Product.find(filter);
