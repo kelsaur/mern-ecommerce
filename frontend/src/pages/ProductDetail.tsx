@@ -11,7 +11,7 @@ const ProductDetail = () => {
 		return (
 			<div>
 				<Navbar />
-				<p className="text-center py-10">Product not found</p>
+				<p className="text-center py-10">Product not found.</p>
 				<Footer />
 			</div>
 		);
@@ -20,7 +20,7 @@ const ProductDetail = () => {
 	return (
 		<div>
 			<Navbar />
-			<main className="flex flex-row mx-auto px-4 py-10">
+			<main className="m-p flex flex-row">
 				<ProductDetailCard id={id} />
 			</main>
 			<Footer />

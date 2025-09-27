@@ -35,10 +35,18 @@ html {
 	@apply bg-[#f3f4f6] text-[#202116] px-4 py-2 hover:bg-[#bcb9b4];
 }
 
+.button-4 {
+	@apply bg-[#e8e7e3] text-[#202116] px-4 py-2 hover:bg-[#3784de] active:bg-[#3784de];
+}
+
 .rounding-1 {
 	@apply rounded-md;
 }
 
 .input-1 {
 	@apply border-gray-300 focus:outline-none focus:ring-1 focus:ring-zinc-500 focus:border-stone-700;
+}
+
+.m-p {
+	@apply mx-auto px-4 py-10;
 }

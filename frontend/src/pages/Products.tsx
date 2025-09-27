@@ -6,7 +6,7 @@ const Products = () => {
 	return (
 		<div>
 			<Navbar />
-			<main className="flex justify-end gap-8 mx-auto px-4 py-10">
+			<main className="m-p flex justify-end gap-8">
 				{/*<Filter />*/}
 				<ProductGrid />
 			</main>
