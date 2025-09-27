@@ -44,13 +44,17 @@ const ProductGrid = () => {
 	}, [audience, categories]);
 
 	return (
-		<div className="bg-white">
+		<div>
 			<div className="mx-auto max-w-full">
-				<div className="grid grid-cols-1 gap-x-3 gap-y-10 sm:grid-cols-1 lg:grid-cols-4">
-					{products.map((product) => (
-						<ProductCard key={product._id} product={product} />
-					))}
-				</div>
+				{products.length > 0 ? (
+					<div className="grid grid-cols-1 gap-x-3 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+						{products.map((product) => (
+							<ProductCard key={product._id} product={product} />
+						))}
+					</div>
+				) : (
+					<p>There are currently no products in this category.</p>
+				)}
 			</div>
 		</div>
 	);

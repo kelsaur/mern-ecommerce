@@ -51,9 +51,9 @@ const Filter = () => {
 	}, [location.search]);
 
 	return (
-		<aside className="w-64 p-4 border-r">
+		<aside className="md:px-4">
 			<h3 className="font-semibold mb-3">Categories</h3>
-			<ul className="flex flex-col gap-2">
+			<ul className="flex flex-wrap gap-2 md:flex-col">
 				{CATEGORIES.map((cat) => (
 					<li key={cat} className="flex items-center gap-2">
 						<input

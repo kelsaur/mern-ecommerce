@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon, ShoppingCartIcon } from "@heroicons/react/24/outline";
 
 type InfoItems = string[];
@@ -12,6 +12,12 @@ const Navbar = () => {
 	];
 
 	const [menuOpen, setMenuOpen] = useState(false);
+	const location = useLocation();
+
+	//route changes -> menu closes
+	useEffect(() => {
+		setMenuOpen(false);
+	}, [location]);
 
 	return (
 		<>
@@ -65,30 +71,35 @@ const Navbar = () => {
 			</nav>
 
 			{/* overlay & sidebar menu */}
-			{menuOpen && (
-				<>
-					{/* overlay */}
-					<div
-						className="fixed inset-0 bg-black/50 z-50"
+
+			<>
+				{/* overlay */}
+				<div
+					className={`fixed inset-0 bg-black/50 z-40 transition-opacity duration-300 ${
+						menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+					}`}
+					onClick={() => setMenuOpen(false)}
+				></div>
+				{/* sidebar */}
+				<div
+					className={`fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 p-6 flex flex-col transform transition-transform duration-300 ${
+						menuOpen ? "translate-x-0" : "-translate-x-full"
+					}`}
+				>
+					<button
+						className="mb-6 text-gray-700 text-right"
 						onClick={() => setMenuOpen(false)}
-					></div>
-					{/* sidebar */}
-					<div className="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 p-6 flex flex-col">
-						<button
-							className="mb-6 text-gray-700 text-right"
-							onClick={() => setMenuOpen(false)}
-						>
-							X
-						</button>
-						<nav className="flex flex-col gap-4">
-							<Link to="/products?audience=women">Women</Link>
-							<Link to="/products?audience=men">Men</Link>
-							<Link to="/products?audience=kids">Kids</Link>
-							<Link to="#">New In</Link>
-						</nav>
-					</div>
-				</>
-			)}
+					>
+						X
+					</button>
+					<nav className="flex flex-col gap-4">
+						<Link to="/products?audience=women">Women</Link>
+						<Link to="/products?audience=men">Men</Link>
+						<Link to="/products?audience=kids">Kids</Link>
+						<Link to="#">New In</Link>
+					</nav>
+				</div>
+			</>
 		</>
 	);
 };

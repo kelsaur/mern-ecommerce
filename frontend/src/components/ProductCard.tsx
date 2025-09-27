@@ -11,7 +11,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 			<img
 				src={product.image}
 				alt={product.title}
-				className="aspect-square w-full bg-gray-200 object-cover group-hover:opacity-75 lg:aspect-auto lg:h-80"
+				className="aspect-square w-full bg-gray-200 object-cover hover:opacity-75"
 			/>
 			<div className="flex justify-between mt-4 ">
 				<h3 className="text-sm hover-2">
@@ -19,6 +19,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
 				</h3>
 				<p className="text-sm font-medium">SEK{product.price}</p>
 			</div>
+			<p className="text-xs">{product.color}</p>
 		</Link>
 	);
 };

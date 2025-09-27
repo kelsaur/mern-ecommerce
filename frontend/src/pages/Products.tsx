@@ -7,8 +7,10 @@ const Products = () => {
 	return (
 		<div>
 			<Navbar />
-			<main className="m-p flex justify-end gap-8">
-				<Filter />
+			<main className="m-p flex flex-col gap-8 md:flex-row">
+				<aside className="flex-shrink-0">
+					<Filter />
+				</aside>
 				<ProductGrid />
 			</main>
 			<Footer />
