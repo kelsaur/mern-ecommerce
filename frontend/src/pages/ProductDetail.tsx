@@ -1,30 +1,27 @@
 import { useParams } from "react-router-dom";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
 import ProductDetailCard from "../components/ProductDetailCard";
+import type { CartItem } from "../types/cart";
 
-const ProductDetail = () => {
+type ProductDetailProps = {
+	addToCart: (item: CartItem) => void;
+};
+
+const ProductDetail = ({ addToCart }: ProductDetailProps) => {
 	//id from URL
 	const { id } = useParams<{ id: string }>();
 
 	if (!id) {
 		return (
 			<div>
-				<Navbar />
 				<p className="text-center py-10">Product not found.</p>
-				<Footer />
 			</div>
 		);
 	}
 
 	return (
-		<div>
-			<Navbar />
-			<main className="m-p flex flex-row">
-				<ProductDetailCard id={id} />
-			</main>
-			<Footer />
-		</div>
+		<main className="m-p flex flex-row">
+			<ProductDetailCard id={id} addToCart={addToCart} />
+		</main>
 	);
 };
 

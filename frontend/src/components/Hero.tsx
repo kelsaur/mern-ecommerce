@@ -1,4 +1,5 @@
 import hero1 from "../assets/hero_1.png";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
 	return (
@@ -15,9 +16,11 @@ const Hero = () => {
 							Minimal Design, Nordic Soul
 						</h1>
 						<p>Elevated essentials in timeless design.</p>{" "}
-						<button className="button-3 rounding-1 w-fit">
-							Discover Knitwear
-						</button>
+						<Link to="/products?category=sweaters">
+							<button className="button-3 rounding-1 w-fit">
+								Discover New Knitwear
+							</button>
+						</Link>
 					</div>
 				</div>
 			</div>

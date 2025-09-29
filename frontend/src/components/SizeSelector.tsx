@@ -3,18 +3,24 @@ import type { Product } from "../types/product";
 
 type SizeSelectorProps = {
 	audience: Product["audience"];
+	onSelectedSize: (size: string | number) => void;
 };
 
 const kidsSizes = [92, 98, 104, 110, 116, 122, 128];
 const adultSizes = ["XS", "S", "M", "L", "XL"];
 
-const SizeSelector = ({ audience }: SizeSelectorProps) => {
+const SizeSelector = ({ audience, onSelectedSize }: SizeSelectorProps) => {
 	const [selectedSize, setSelectedSize] = useState<string | number | null>(
 		null
 	);
 
 	const sizes =
 		audience == "women" || audience == "men" ? adultSizes : kidsSizes;
+
+	const handleSelected = (size: string | number) => {
+		setSelectedSize(size);
+		onSelectedSize(size); // to productDetailCard
+	};
 
 	return (
 		<div className="mt-6">
@@ -27,7 +33,7 @@ const SizeSelector = ({ audience }: SizeSelectorProps) => {
 					{sizes.map((size) => (
 						<button
 							key={size}
-							onClick={() => setSelectedSize(size)}
+							onClick={() => handleSelected(size)}
 							className={`w-[60px] px-4 py-2 border border-[#a5a5a5] rounded-xs text-sm ${
 								selectedSize === size
 									? "bg-[#bcb9b4]"

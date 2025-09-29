@@ -2,17 +2,22 @@ import { useState } from "react";
 import { useEffect } from "react";
 import type { Product } from "../types/product";
 import SizeSelector from "./SizeSelector";
+import type { CartItem } from "../types/cart";
 
 type ProductDetailCardProps = {
 	id: string;
+	addToCart: (item: CartItem) => void;
 };
 
 type ProductResponse = {
 	product: Product;
 };
 
-const ProductDetailCard = ({ id }: ProductDetailCardProps) => {
+const ProductDetailCard = ({ id, addToCart }: ProductDetailCardProps) => {
 	const [product, setProduct] = useState<Product | null>(null);
+	const [selectedSize, setSelectedSize] = useState<string | number | null>(
+		null
+	);
 
 	useEffect(() => {
 		const fetchProduct = async () => {
@@ -58,9 +63,28 @@ const ProductDetailCard = ({ id }: ProductDetailCardProps) => {
 					</div>
 				</div>
 
-				<SizeSelector audience={product.audience} />
+				<SizeSelector
+					audience={product.audience}
+					onSelectedSize={setSelectedSize}
+				/>
 
-				<button className="button-4 rounded-full text-lg">Add To Cart</button>
+				<button
+					className="button-4 rounded-full text-lg"
+					disabled={!selectedSize}
+					onClick={() =>
+						addToCart({
+							_id: product._id,
+							title: product.title,
+							price: product.price,
+							color: product.color,
+							image: product.image,
+							size: selectedSize!,
+							quantity: 1,
+						})
+					}
+				>
+					Add To Cart
+				</button>
 			</div>
 		</div>
 	);

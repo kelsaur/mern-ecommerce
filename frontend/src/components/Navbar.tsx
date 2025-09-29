@@ -1,10 +1,17 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon, ShoppingCartIcon } from "@heroicons/react/24/outline";
+import type { CartItem } from "../types/cart";
 
 type InfoItems = string[];
 
-const Navbar = () => {
+type NavbarProps = {
+	cart: CartItem[];
+};
+
+const Navbar = ({ cart }: NavbarProps) => {
+	const cartCount = cart.reduce((acc, item) => acc + item.quantity, 0);
+
 	const infoItems: InfoItems = [
 		"Find your store",
 		"30 day return policy",
@@ -59,12 +66,14 @@ const Navbar = () => {
 
 						{/* Cart */}
 						<div className="flex items-center space-x-6 px-2">
-							<button className="relative ">
+							<Link to="/cart" className="relative ">
 								<ShoppingCartIcon className="h-6 w-6 text-gray-700 " />
-								<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-									3
-								</span>
-							</button>
+								{cartCount > 0 && (
+									<span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
+										{cartCount}
+									</span>
+								)}
+							</Link>
 						</div>
 					</div>
 				</div>
@@ -96,7 +105,7 @@ const Navbar = () => {
 						<Link to="/products?audience=women">Women</Link>
 						<Link to="/products?audience=men">Men</Link>
 						<Link to="/products?audience=kids">Kids</Link>
-						<Link to="#">New In</Link>
+						<Link to="/products?category=sweaters">New In</Link>
 					</nav>
 				</div>
 			</>
