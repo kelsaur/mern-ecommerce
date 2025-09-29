@@ -24,7 +24,7 @@ const ProductDetailCard = ({ id, addToCart }: ProductDetailCardProps) => {
 	useEffect(() => {
 		const fetchProduct = async () => {
 			try {
-				const res = await fetch(`${API_URL}/api/products/${id}`);
+				const res = await fetch(`${API_URL}api/products/${id}`);
 				if (!res.ok) {
 					throw new Error(`HTTP error! status: ${res.status}`);
 				}
