@@ -3,6 +3,8 @@ import { useLocation } from "react-router-dom";
 import type { Product } from "../types/product";
 import ProductCard from "./ProductCard";
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 type ProductsResponse = {
 	products: Product[];
 };
@@ -29,7 +31,7 @@ const ProductGrid = () => {
 				}
 
 				const res = await fetch(
-					`http://localhost:4000/api/products?${queryParams.toString()}`
+					`${API_URL}/api/products?${queryParams.toString()}`
 				);
 				if (!res.ok) {
 					throw new Error(`HTTP error! status: ${res.status}`);
