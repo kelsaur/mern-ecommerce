@@ -61,7 +61,7 @@ const Navbar = ({ cart }: NavbarProps) => {
 								<input
 									type="text"
 									placeholder="Search products..."
-									className="text-sm input-1 w-full pl-3 pr-12 py-2 border rounded-full"
+									className=" input-1 w-full pl-3 pr-12 py-2 border rounded-full placeholder:text-sm"
 								/>
 							</div>
 						</div>
