@@ -33,7 +33,7 @@ const Navbar = ({ cart }: NavbarProps) => {
 					{/* top nav with text */}
 					<div className="bg-[#eeede9] flex justify-between items-center h-12 px-3">
 						{infoItems.map((item) => (
-							<p key={item} className="text-xs md: text-md">
+							<p key={item} className="text-xs md:text-md">
 								{item}
 							</p>
 						))}

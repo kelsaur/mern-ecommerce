@@ -14,6 +14,8 @@ const Cart = ({
 	decrementFromCart,
 	deleteFromCart,
 }: CartProps) => {
+	const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
 	return (
 		<div className="m-p">
 			<h1 className="text-2xl font-bold mb-6">Cart</h1>
@@ -30,6 +32,11 @@ const Cart = ({
 					/>
 				))
 			)}
+			<div className="flex justify-end mt-6 ">
+				<p className="text-xl font-semibold">
+					Total: <span className="ml-2">{total} SEK</span>
+				</p>
+			</div>
 		</div>
 	);
 };
