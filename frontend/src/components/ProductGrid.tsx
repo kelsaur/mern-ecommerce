@@ -24,6 +24,7 @@ const ProductGrid = () => {
 	useEffect(() => {
 		const fetchProducts = async () => {
 			setLoading(true);
+			await new Promise((r) => setTimeout(r, 200));
 			try {
 				//rebuild queryParams for API req to only send filters i want from backend
 				const queryParams = new URLSearchParams();
