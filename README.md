@@ -1,5 +1,15 @@
 🎈**This project is under development. I’m building it to showcase both frontend and backend skills in a real-world fullstack application.**
 
+## Live demo
+
+- **Frontend** - Deployed on Vercel
+
+- **Backend** - Deployed on Render
+
+[Try the live app here](https://mern-ecommerce-seven-cyan.vercel.app/)
+
+PS! The backend may take a minute to spin up (free Render tier).
+
 ## E-commerce App
 
 A **fullstack e-commerce app** (work in progress).  
