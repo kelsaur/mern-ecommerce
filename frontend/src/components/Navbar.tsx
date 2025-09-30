@@ -57,7 +57,7 @@ const Navbar = ({ cart }: NavbarProps) => {
 
 						{/* Search bar */}
 						<div className="flex-1 px-2">
-							<div className="max-w-[180px] md:max-w-md mx-auto">
+							<div className="max-w-[180px] md:max-w-md mx-auto ">
 								<input
 									type="text"
 									placeholder="Search products..."

@@ -11,6 +11,7 @@ type ProductsResponse = {
 
 const ProductGrid = () => {
 	const [products, setProducts] = useState<Product[]>([]);
+	const [loading, setLoading] = useState<boolean>(false);
 
 	//read user's URL filters
 	const location = useLocation();
@@ -22,6 +23,7 @@ const ProductGrid = () => {
 
 	useEffect(() => {
 		const fetchProducts = async () => {
+			setLoading(true);
 			try {
 				//rebuild queryParams for API req to only send filters i want from backend
 				const queryParams = new URLSearchParams();
@@ -40,6 +42,9 @@ const ProductGrid = () => {
 				setProducts(data.products);
 			} catch (error) {
 				console.error("Failed to fetch products: ", error);
+				setProducts([]);
+			} finally {
+				setLoading(false);
 			}
 		};
 		fetchProducts();
@@ -48,7 +53,9 @@ const ProductGrid = () => {
 	return (
 		<div>
 			<div className="mx-auto max-w-full">
-				{products.length > 0 ? (
+				{loading ? (
+					<p>Loading products...</p>
+				) : products.length > 0 ? (
 					<div className="grid grid-cols-1 gap-x-3 gap-y-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 						{products.map((product) => (
 							<ProductCard key={product._id} product={product} />
