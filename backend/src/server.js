@@ -19,7 +19,8 @@ export const startServer = async () => {
 	try {
 		await mongoose.connect(MONGODB_URI);
 		console.log("Connected to MongoDB!");
-		app.listen(PORT, () => {
+		//0.0.0.0 - for Docker container to connect to browser
+		app.listen(PORT, "0.0.0.0", () => {
 			console.log(`Server is listening on port ${PORT}`);
 		});
 	} catch (err) {

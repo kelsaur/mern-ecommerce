@@ -1,19 +1,22 @@
-🎈**This project is under development. I’m building it to showcase both frontend and backend skills in a real-world fullstack application.**
+🎈**This project is under development.** <br>
+I'm building this **E-commerce App** to showcase both frontend and backend skills in a real-world fullstack application.
 
 ## Live demo
 
 - **Frontend** - Deployed on Vercel
-
 - **Backend** - Deployed on Render
 
 [Try the live app here](https://mern-ecommerce-seven-cyan.vercel.app/)
 
-PS! The backend may take a minute to spin up (free Render tier).
+PS! The backend may take a minute to load, so please be patient (free Render tier).
 
-## E-commerce App
+## Overview
 
-A **fullstack e-commerce app** (work in progress).  
-Built with **React + TypeScript + Tailwind + Vite** on the frontend, and **Express + MongoDB + Joi** on the backend.
+A **fullstack e-commerce app** built with:
+
+- **React + TypeScript + Tailwind + Vite** on the frontend
+- **Express + MongoDB + Joi** on the backend
+- **Docker** support for both frontend and backend
 
 ## Features (so far)
 
@@ -57,7 +60,7 @@ Built with **React + TypeScript + Tailwind + Vite** on the frontend, and **Expre
    MONGODB_URI=your_mongodb_connection_string
    ```
 
-4. **Run the app**
+4. **Run the app locally**
 
    ```bash
     #Run backend
@@ -68,6 +71,20 @@ Built with **React + TypeScript + Tailwind + Vite** on the frontend, and **Expre
     cd frontend
     npm run dev
    ```
+
+## Run with Docker
+
+If you have Docker installed, you can run the entire stack:
+
+```bash
+docker compose build
+docker compose up
+```
+
+This starts:
+
+- Frontend → http://localhost:3000
+- Backend → http://localhost:4000
 
 ## Coming up features
 

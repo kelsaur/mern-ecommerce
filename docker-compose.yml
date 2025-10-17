@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+  server:
+    build:
+      context: ./backend
+    container_name: api-server
+    environment:
+      - NODE_ENV=production
+      - PORT=4000
+    env_file: ./backend/.env
+    ports:
+      - "4000:4000" #expose API on host
+    networks:
+      - appnet
+
+  client:
+    build:
+      context: ./frontend
+    container_name: web-client
+    depends_on:
+      - server
+    ports:
+      - "3000:80" #host 3000, nginx 80
+    networks:
+      - appnet
+
+#networks allow containers to talk to each other by name in Docker Compose
+networks:
+  appnet:
+    driver: bridge

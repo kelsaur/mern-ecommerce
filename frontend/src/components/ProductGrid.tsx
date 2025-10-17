@@ -31,7 +31,7 @@ const ProductGrid = () => {
 				}
 
 				const res = await fetch(
-					`${API_URL}/api/products?${queryParams.toString()}`
+					`${API_URL}/products?${queryParams.toString()}`
 				);
 				if (!res.ok) {
 					throw new Error(`HTTP error! status: ${res.status}`);
